@@ -6,6 +6,8 @@ TagManager:
   tags:
   - gun
   - bullet
+  - Bullet
+  - Barrel
   layers:
   - Default
   - TransparentFX

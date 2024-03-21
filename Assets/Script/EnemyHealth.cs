@@ -1,5 +1,6 @@
-using System.Collections;
+
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -23,14 +24,18 @@ public class EnemyHealth : MonoBehaviour
         // If the enemy is knocked back, move it in the knockback direction
         if (isKnockedBack)
         {
-            transform.Translate(knockbackDirection * knockbackForce * Time.deltaTime, Space.World);
+            // Modify the knockback direction to ignore the Y axis
+            Vector3 knockbackDirectionXZ = new Vector3(knockbackDirection.x, 0f, knockbackDirection.z).normalized;
+
+            // Move the enemy in the modified knockback direction
+            transform.Translate(knockbackDirectionXZ * knockbackForce * Time.deltaTime, Space.World);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
         // Check if the enemy is hit by a bullet
-        if (other.CompareTag("bullet"))
+        if (other.CompareTag("Bullet"))
         {
             // Decrease enemy health
             currentHealth--;
