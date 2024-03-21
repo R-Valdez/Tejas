@@ -8,6 +8,8 @@ TagManager:
   - bullet
   - Bullet
   - Barrel
+  - Barrel2
+  - Bullet2
   layers:
   - Default
   - TransparentFX

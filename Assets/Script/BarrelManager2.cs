@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrelManager : MonoBehaviour
+public class BarrelManager2 : MonoBehaviour
 {
     public GameObject barrelPrefab; // Reference to the barrel prefab
     public Transform spawnPoint; // Specify the spawn point for barrels in the Inspector
@@ -12,7 +12,6 @@ public class BarrelManager : MonoBehaviour
     public int maxBarrels = 10; // Maximum number of barrels the player can spawn
 
     private int currentBarrels = 0; // Current number of spawned barrels
-    private int barrelsDestroyed = 0; // Number of barrels destroyed
     private AudioSource audioSource; // Reference to the AudioSource component
 
     void Start()
@@ -24,7 +23,7 @@ public class BarrelManager : MonoBehaviour
     void Update()
     {
         // Check for input to spawn barrels
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             if (currentBarrels == maxBarrels)
             {
@@ -64,19 +63,8 @@ public class BarrelManager : MonoBehaviour
         if (barrelDestroySound != null && audioSource != null)
         {
             audioSource.PlayOneShot(barrelDestroySound);
-        }
-
-        // Increment the count of destroyed barrels
-        barrelsDestroyed++;
-
-        // Decrement the current number of barrels
-        currentBarrels--;
-
-        // Check if the number of destroyed barrels reaches the maximum limit
-        if (barrelsDestroyed == maxBarrels)
-        {
-            // Display a message indicating that the player has won
-            Debug.Log("Player has destroyed all barrels!");
+            // Debug log after the destroy sound is played
+            Debug.Log("Barrel destroy sound played.");
         }
 
         // Delay the destruction of the barrel to ensure the destroy sound is heard
@@ -87,19 +75,12 @@ public class BarrelManager : MonoBehaviour
     {
         // Wait for a short delay
         yield return new WaitForSeconds(0.5f);
+        // Debug log after the destroy sound is played
+        Debug.Log("Barrel destroy sound played.");
+        // Decrement the current number of barrels
+        currentBarrels--;
 
         // Destroy the barrel
         Destroy(barrel);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        // Check if the barrel collides with Bullet2
-        if (other.CompareTag("Bullet"))
-        {
-            print("collided");
-            // Increment the barrels destroyed counter
-            barrelsDestroyed++;
-        }
     }
 }

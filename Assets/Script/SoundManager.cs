@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -32,7 +30,7 @@ public class SoundManager : MonoBehaviour
             // Deactivate all Audio Listeners except for the first one found
             for (int i = 1; i < audioListeners.Length; i++)
             {
-                audioListeners[i].enabled = false;
+                Destroy(audioListeners[i]);
             }
         }
     }

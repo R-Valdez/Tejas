@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet2 : MonoBehaviour
 {
     public AudioClip barrelDestroySound; // Sound to play when destroying a barrel
     private TrailRenderer trailRenderer;
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if the bullet hits an object tagged as "Barrel"
-        if (other.CompareTag("Barrel2"))
+        if (other.CompareTag("Barrel"))
         {
             // Play the barrel destroy sound if available
             if (barrelDestroySound != null && audioSource != null)
