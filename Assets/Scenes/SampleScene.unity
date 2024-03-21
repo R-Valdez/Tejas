@@ -1871,7 +1871,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a175e8aa3c37b047b05cba0b3295e22, type: 3}
   m_Name: 
@@ -2156,6 +2156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  footstepSound: {fileID: 8300000, guid: e72a06eb2fb9aa345bd30b5af7e902c7, type: 3}
 --- !u!114 &1002963338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,3 +2679,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  footstepSound: {fileID: 8300000, guid: e72a06eb2fb9aa345bd30b5af7e902c7, type: 3}

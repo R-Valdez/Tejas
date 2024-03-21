@@ -3,6 +3,9 @@ using UnityEngine;
 public class CowboyControl2 : MonoBehaviour
 {
     public float speed = 5f;
+    public AudioClip footstepSound; // Sound to play when the player moves
+
+    private Vector3 previousMoveDirection = Vector3.zero;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +35,13 @@ public class CowboyControl2 : MonoBehaviour
         // Calculate movement direction
         Vector3 moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
 
+        // Check if the movement direction has changed
+        if (moveDirection != previousMoveDirection)
+        {
+            PlayFootstepSound();
+            previousMoveDirection = moveDirection;
+        }
+
         // Check if there is input and move the character
         if (moveDirection.magnitude >= 0.1f)
         {
@@ -43,6 +53,22 @@ public class CowboyControl2 : MonoBehaviour
 
             // Move the character in the direction it's facing
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+    }
+
+    // Method to play footstep sound
+    void PlayFootstepSound()
+    {
+        if (footstepSound != null)
+        {
+            // Create a temporary AudioSource instance
+            AudioSource temporaryAudioSource = gameObject.AddComponent<AudioSource>();
+            // Lower the volume by half
+            temporaryAudioSource.volume = 0.5f;
+            // Play the footstep sound
+            temporaryAudioSource.PlayOneShot(footstepSound);
+            // Destroy the temporary AudioSource instance
+            Destroy(temporaryAudioSource, footstepSound.length);
         }
     }
 }
