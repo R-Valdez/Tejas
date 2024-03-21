@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if the enemy is hit by a bullet
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("Bullet2"))
         {
             // Decrease enemy health
             currentHealth--;

@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public AudioClip barrelDestroySound; // Sound to play when destroying a barrel
     private TrailRenderer trailRenderer;
     private AudioSource audioSource;
+    public int maxBarrel = 10;
+    public int destroyedBarrels= 0;
 
     void Start()
     {
@@ -45,7 +47,11 @@ public class Bullet : MonoBehaviour
 
             // Then destroy the barrel
             Destroy(other.gameObject);
-            
+            //keep count of destroyed barrels
+            destroyedBarrels++;
+            if (destroyedBarrels == maxBarrel) { 
+            print( "PLAYER 2 wins");
+            }
             
             DestroyBullet();
         }
